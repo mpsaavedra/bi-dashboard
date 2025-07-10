@@ -1,0 +1,40 @@
+{
+  "reports": [
+    {
+      "id": "sales",
+      "name": "Sales Report",
+      "cards": { "total": 125000, "average": 4166.67 },
+      "line": [
+        { "date": "2025-07-01", "value": 3500 },
+        { "date": "2025-07-02", "value": 4100 },
+        { "date": "2025-07-03", "value": 3200 },
+        { "date": "2025-07-04", "value": 5300 },
+        { "date": "2025-07-05", "value": 4800 },
+        { "date": "2025-07-06", "value": 5250 }
+      ],
+      "bar": [
+        { "category": "EMEA", "value": 48000 },
+        { "category": "Americas", "value": 53000 },
+        { "category": "APAC", "value": 24000 }
+      ]
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory Report",
+      "cards": { "total": 8420, "average": 280.67 },
+      "line": [
+        { "date": "2025-07-01", "value": 9000 },
+        { "date": "2025-07-02", "value": 8800 },
+        { "date": "2025-07-03", "value": 8600 },
+        { "date": "2025-07-04", "value": 8500 },
+        { "date": "2025-07-05", "value": 8400 },
+        { "date": "2025-07-06", "value": 8420 }
+      ],
+      "bar": [
+        { "category": "Warehouse A", "value": 3200 },
+        { "category": "Warehouse B", "value": 2700 },
+        { "category": "Warehouse C", "value": 2520 }
+      ]
+    }
+  ]
+}
