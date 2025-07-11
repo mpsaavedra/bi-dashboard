@@ -38,7 +38,7 @@ export default function LoginPage() {
             <h1 className="text-2xl font-bold">BI Dashboard Login</h1>
             <p className="text-sm text-muted-foreground mt-2">
               Test credentials: <br />
-              technology@kameleonlabs.ai  <b>#4nrsHSre1#@uPC$3ZR8</b>
+              admin  <b>admin</b>
             </p>
           </div>
           

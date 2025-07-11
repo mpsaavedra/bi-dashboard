@@ -37,10 +37,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = async (username: string, password: string) => {
     // In a real app, this would be an API call
-    if (username === 'technology@kameleonlabs.ai' && password === '#4nrsHSre1#@uPC$3ZR8') {
+    if (username === 'admin' && password === 'admin') {
       const adminUser: User = {
         id: 'admin1',
-        username: 'technology@kameleonlabs.ai',
+        username: 'Admin',
         name: 'Admin User',
         role: 'admin',
         reports: ['sales', 'inventory']
