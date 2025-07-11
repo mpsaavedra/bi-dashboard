@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 const protectedRoutes = ['/admin', '/report']
 const publicRoutes = ['/login', '/logout']
 
+// simple security middleware
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
@@ -19,7 +20,7 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL('/login', req.nextUrl))
   }
 
-  // Redirect to dashboard if already authenticated and trying to access login
+  // already authenticated and trying to access login back to dash
   if (path === '/login' && isAuthenticated) {
     return NextResponse.redirect(new URL('/report/sales', req.nextUrl))
   }

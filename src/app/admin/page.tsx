@@ -188,7 +188,7 @@ export default function AdminPage() {
               
               <button
                 onClick={handleAddUser}
-                className="w-full bg-primary text-primary-foreground p-2 rounded"
+                className="w-full text-primary-foreground p-2 rounded bg-green-600 hover:bg-green-500"
               >
                 Add User
               </button>
@@ -226,7 +226,7 @@ export default function AdminPage() {
               
               <button
                 onClick={handleAddCompany}
-                className="w-full bg-primary text-primary-foreground p-2 rounded"
+                className="w-full text-primary-foreground p-2 rounded bg-green-600 hover:bg-green-500"
               >
                 Add Company
               </button>
