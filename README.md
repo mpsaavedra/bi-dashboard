@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BI Dashboard
 
-## Getting Started
+# Multi-provider Authentication Strategy
 
-First, run the development server:
+The main goal is to let users connect their accounts from different services (like Google, Salesforce, Odoo, etc.) 
+so we can pull together a complete report for them. The tricky part? We need to handle all of this magic right inside 
+their web browser. Here’s how we’re planning to tackle it.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Making the Login Process Feel Smooth
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instead of bouncing the user around to different websites, which can be disorienting, we’ll use pop-up windows for each login.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+When you click "**Connect to Google**," a small, new window will pop up with the familiar Google login page. You do your thing, 
+and once you’re signed in, the pop-up closes automatically. The main app will have been waiting for you right where you left it. 
+Then you can do the same for the next service. It’s a much cleaner experience and feels less like you’re being passed all over 
+the internet.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where We'll Keep the Digital "Keys"
 
-## Learn More
+I would decide to hold them only in the application's active memory. Think of it like writing a password on a whiteboard. As long 
+as you're actively using the app, the keys are there for it to use. But the moment you close the tab or refresh the page, the 
+whiteboard gets wiped completely clean. This is a deliberate security choice. The alternative, saving them in the browser's permanent 
+storage, is like leaving your keys lying on a public table—more convenient, but much riskier. 
 
-To learn more about Next.js, take a look at the following resources:
+## Keeping You Logged In Seamlessly
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Those digital keys expire, usually after an hour or so. It would be incredibly annoying to get logged out while you’re in the middle of something.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To prevent this, our app could have a smart assistant working in the background. Before it uses a key, it will quickly check if it's about to 
+expire. If it is, the assistant will silently use a special long-term key to grab a fresh one from the provider, all without interrupting what 
+the user is doing. The result is a session that feels continuous and smooth.
+How does the app know when all the necessary accounts are connected and it's time to show the report? I’ll use a simple checklist behind the scenes.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A component like the "Display Report of Oddo" button will be watching this checklist. It will remain greyed out and unclickable until all the 
+required boxes are checked. As soon as that last login is complete, the button will light up, letting the user know everything is ready to go.
